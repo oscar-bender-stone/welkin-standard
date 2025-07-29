@@ -12,4 +12,6 @@ You will need the following prequisites:
 
 Here are the available tasks:
 * Generate HTML files: <code> python main.py <\code>.
+
+Tasks that should only be run automatically:
 * REUSE compliance: <code> reuse lint <\code>.

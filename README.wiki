@@ -7,18 +7,17 @@ This is the official repository
 for the Welkin standard.
 
 == Project Organization ==
-* [specification]: contains the text written form
+* [[standard]]: contains the text written form
   of the Welkin Standard.
 ** Each subfolder uses ISO 639-3 codes 
    for translations of the Standard. 
 ** The base specification is English,
-   contained in [standard/eng].
+   contained in [[standard/eng]].
 
 == Tools ==
 
 For details on running tools for the Standard, 
-please see [./tools].
-
+please see [[tools]].
 
 == Copyright ==
 
