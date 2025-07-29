@@ -1,0 +1,15 @@
+<!-- SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com> -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+
+= Tools for the Welkin Standard =
+
+These tools are used for several tasks
+in the Welkin Standard.
+
+You will need the following prequisites:
+* [[Python 3.13|https://www.python.org/]].
+* [[uv|https://docs.astral.sh/uv/getting-started/installation/#standalone-installer]].
+
+Here are the available tasks:
+* Generate HTML files: <code> python main.py <\code>.
+* REUSE compliance: <code> reuse lint <\code>.

@@ -1,0 +1,25 @@
+<!-- SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com> -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+
+= The Welkin Standard =
+
+This is the official repository
+for the Welkin standard.
+
+== Project Organization ==
+* [specification]: contains the text written form
+  of the Welkin Standard.
+** Each subfolder uses ISO 639-3 codes 
+   for translations of the Standard. 
+** The base specification is English,
+   contained in [standard/eng].
+
+== Tools ==
+
+For details on running tools for the Standard, 
+please see [./tools].
+
+
+== Copyright ==
+
+2025 Copyright Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
