@@ -15,8 +15,10 @@ providing the best of both worlds:
 	to unify the presentation 
 	of the Standard across platforms, 
 	helping to make it precise as possible.
+
 * MediaWiki is a well supported format,
-  having well-formed and accessible HTML.
+  having well-formed and accessible HTML,
+	as well as text editor support.
 
 The text documents are
 the final format, 
@@ -28,3 +30,22 @@ A CFG may be given to
 Minimal Markup,
 but this is not provided here.
 <!-- TODO: decide if a simple EBNF should be added for Minimal Markup -->
+
+== Specification == 
+
+* There are several elements:
+
+** Headers start on a new line
+	 are surrounded by a 
+	 set of delimiters <code> = </code>.
+	 Inside, there is a single space,
+	 followed by a non space character,
+	 followed by any number of characters,
+	 and finally ending with a space.
+
+** Paragraphs can contain UTF-8 and optional
+	 formatting characters.
+
+** Links are written with brackets.
+
+* Each element is separated by a newline.
