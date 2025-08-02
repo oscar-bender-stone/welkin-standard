@@ -1,24 +1,27 @@
 <!-- SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com> -->
 <!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
 
-= Minimal Markup =
+= Minimal Ink (Mink) =
 
 This document specifies the
-Minimal Markup language
+Minimal Ink language
 used in the Welkin Standard.
-Minimal Markup is an 
-unambiguous subset of
-MediaWiki Markup,
-providing the best of both worlds:
+Minimal Ink is an 
+unambiguous markup language,
+compatible with MediaWiki.
+This compatibility provides
+the best of both worlds:
 
 * The subset helps
 	to unify the presentation 
 	of the Standard across platforms, 
 	helping to make it precise as possible.
+	The language even has a verified
+	LL(1) parser (WIP).
 
-* MediaWiki is a well supported format,
-  having well-formed and accessible HTML,
-	as well as text editor support.
+* MediaWiki is a pervasive format,
+  with wide tooling support
+  (particularly from Pandoc and GitHub).
 
 The text documents are
 the final format, 

@@ -2,14 +2,13 @@
 # SPDX-License-Identifier: MIT
 
 [project]
-name = "tools"
+name = "mm1"
 version = "0.1.0"
-description = "Tools used to generate the Welkin Standard."
+description = "Script to install and manage MetaMath One proofs for the Welkin Standard."
 readme = "README.wiki"
 requires-python = ">=3.13"
-dependencies = [
-    "pypandoc>=1.15",
-    "reuse>=5.0.2",
-]
 license = "MIT"
 license-files = ["../LICENSES/MIT.txt"]
+dependencies = [
+    "maturin>=1.9.2",
+]

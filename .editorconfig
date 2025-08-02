@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
 # SPDX-License-Identifier: CC0-1.0
 
-[*.wiki]
+[*.mink]
 root = true
 indent_style = tab
-indent_size = 2
+indent_size = 4

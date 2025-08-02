@@ -2,7 +2,15 @@
 # SPDX-License-Identifier: MIT
 
 
-def generate_html():
+def install_mm0():
+    import subprocess
+
+    pass
+
+    # e70adb8db639604f73daf08de5e8ee6a70ab549c
+
+
+def main():
     import pypandoc
 
     language_code = "eng"
@@ -23,10 +31,6 @@ def generate_html():
             # "pagetitle='The Welkin Standard'",
         ],
     )
-
-
-def main():
-    generate_html()
 
 
 if __name__ == "__main__":

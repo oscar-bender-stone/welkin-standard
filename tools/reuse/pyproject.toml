@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
+# SPDX-License-Identifier: MIT
+
+[project]
+name = "mm1"
+version = "0.1.0"
+description = "Script to manage REUSE and SPDX compliance for the Welkin Standard."
+readme = "README.wiki"
+requires-python = ">=3.13"
+license = "MIT"
+license-files = ["../LICENSES/MIT.txt"]
+dependencies = [
+    "reuse>=5.0.2",
+]

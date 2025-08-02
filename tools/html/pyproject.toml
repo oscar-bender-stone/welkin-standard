@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
+# SPDX-License-Identifier: MIT
+
+[project]
+name = "tools"
+version = "0.1.0"
+description = "Script to generate HTML for the Welkin Standard."
+readme = "README.wiki"
+requires-python = ">=3.13"
+dependencies = ["pypandoc>=1.15", "reuse>=5.0.2"]
+license = "MIT"
+license-files = ["../LICENSES/MIT.txt"]
