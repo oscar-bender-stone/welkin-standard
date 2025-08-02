@@ -23,8 +23,9 @@ the best of both worlds:
   with wide tooling support
   (particularly from Pandoc and GitHub).
 
-The Mink files are
-the base reference, 
+The Mink files
+(ending with the `.wiki` extension),
+are the base reference, 
 and can be consulted
 for ambiguities
 from HTML rendering.
