@@ -5,11 +5,13 @@
 
 This is the official repository
 for the Welkin standard.
+Welkin is an information language,
+aimed that organizing any subject.
 
-For details about the markup language
+For details about the Mink markup language
 used in this repository, see [[MARKUP.wiki]].
 In case of ambiguities with HTML rendering,
-the wiki source files 
+the Mink source files 
 serve as the de facto base reference.
 
 == Project Organization ==

@@ -23,16 +23,15 @@ the best of both worlds:
   with wide tooling support
   (particularly from Pandoc and GitHub).
 
-The text documents are
-the final format, 
-and can be
-consulted for ambiguities
+The Mink files are
+the base reference, 
+and can be consulted
+for ambiguities
 from HTML rendering.
 
 A CFG may be given to
 Minimal Markup,
 but this is not provided here.
-<!-- TODO: decide if a simple EBNF should be added for Minimal Markup -->
 
 == Specification == 
 
