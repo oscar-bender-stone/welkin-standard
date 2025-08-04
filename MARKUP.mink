@@ -1,5 +1,5 @@
-<!-- SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com> -->
-<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+// SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
+// SPDX-License-Identifier: CC-BY-SA-4.0
 
 = Minimal Ink (Mink) =
 
@@ -8,7 +8,7 @@ Minimal Ink language
 used in the Welkin Standard.
 Minimal Ink is an 
 unambiguous markup language,
-compatible with MediaWiki.
+compatible with AsciiDoctor.
 This compatibility provides
 the best of both worlds:
 
@@ -19,9 +19,14 @@ the best of both worlds:
 	The language even has a verified
 	LL(1) parser (WIP).
 
-* MediaWiki is a pervasive format,
-  with wide tooling support
+* AsciiDoctor is an established format,
+  with tooling support
   from Pandoc, GitHub, and so on.
+
+Note that AsciiDoctor *does* [support Unicode],
+see https://docs.asciidoctor.org/asciidoc/latest/faq/#does-asciidoc-only-support-ascii-text
+[this FAQ].
+
 
 The Mink files
 (ending with the ``.mink`` extension),
@@ -53,4 +58,4 @@ but this is not provided here.
 
 * Each element is separated by a newline.
 
-<!-- vim: set filetype=mediawiki: -->
+// vim: set filetype=adoc:

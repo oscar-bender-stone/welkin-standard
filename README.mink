@@ -1,5 +1,5 @@
-<!-- SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com> -->
-<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+// SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
+// SPDX-License-Identifier: CC-BY-SA-4.0
 
 = The Welkin Standard =
 
@@ -25,10 +25,10 @@ serve as the de facto base reference.
 == Tools ==
 
 For details on running tools for the Standard, 
-please see [[tools]].
+please see link:tools.
 
 == Copyright ==
 
 2025 Copyright Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
 
-<!-- vim: set filetype=mediawiki: -->
+// vim: set filetype=adoc:

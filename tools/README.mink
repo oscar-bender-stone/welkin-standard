@@ -1,5 +1,5 @@
-<!-- SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com> -->
-<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+// SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
+// SPDX-License-Identifier: CC-BY-SA-4.0
 
 = Tools for the Welkin Standard =
 
@@ -16,4 +16,4 @@ Here are the available tasks:
 Tasks that should only be run automatically:
 * REUSE compliance: <code> reuse lint </code>.
 
-<!-- vim: set filetype=mediawiki: -->
+// vim: set filetype=adoc:
