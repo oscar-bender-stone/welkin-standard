@@ -21,10 +21,10 @@ the best of both worlds:
 
 * MediaWiki is a pervasive format,
   with wide tooling support
-  (particularly from Pandoc and GitHub).
+  from Pandoc, GitHub, and so on.
 
 The Mink files
-(ending with the `.wiki` extension),
+(ending with the ``.mink`` extension),
 are the base reference, 
 and can be consulted
 for ambiguities
@@ -52,3 +52,5 @@ but this is not provided here.
 ** Links are written with brackets.
 
 * Each element is separated by a newline.
+
+<!-- vim: set filetype=mediawiki: -->

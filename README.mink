@@ -9,7 +9,7 @@ Welkin is an information language,
 aimed that organizing any subject.
 
 For details about the Mink markup language
-used in this repository, see [[MARKUP.wiki]].
+used in this repository, see [[MARKUP.mink]].
 In case of ambiguities with HTML rendering,
 the Mink source files 
 serve as the de facto base reference.
@@ -30,3 +30,5 @@ please see [[tools]].
 == Copyright ==
 
 2025 Copyright Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
+
+<!-- vim: set filetype=mediawiki: -->
