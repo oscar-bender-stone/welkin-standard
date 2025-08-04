@@ -16,4 +16,4 @@ Here are the available tasks:
 Tasks that should only be run automatically:
 * REUSE compliance: <code> reuse lint </code>.
 
-// vim: set filetype=adoc:
+// vim: set filetype=asciidoc:
