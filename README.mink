@@ -9,23 +9,21 @@ Welkin is an information language,
 aimed that organizing any subject.
 
 For details about the Mink markup language
-used in this repository, see [[MARKUP.mink]].
+used in this repository, see xref:MARKUP.mink[].
 In case of ambiguities with HTML rendering,
 the Mink source files 
 serve as the de facto base reference.
 
 == Project Organization ==
 
-* [[document]]: contains the text written form of the Welkin Standard.
-
+* link:document[]: contains the text written form of the Welkin Standard.
 ** Each subfolder uses ISO 639-3 codes for translations of the Standard. 
-
-** The base specification is English, contained in [[document/eng]].
+** The base specification is English, contained in xref:document/eng[].
 
 == Tools ==
 
 For details on running tools for the Standard, 
-please see link:tools.
+please see xref:tools[].
 
 == Copyright ==
 

@@ -6,11 +6,16 @@ SPDX-FileCopyrightText = "2025 Oscar Bender-Stone <oscar-bender-stone@protonmail
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
-path = "uv.lock"
+path = "reuse/uv.lock"
 SPDX-FileCopyrightText = "2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>"
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
-path = ".python-version"
+path = "reuse/.python-version"
+SPDX-FileCopyrightText = "2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "markup/Gemfile.lock"
 SPDX-FileCopyrightText = "2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>"
 SPDX-License-Identifier = "CC0-1.0"
