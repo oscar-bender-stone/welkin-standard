@@ -14,8 +14,3 @@ LICENSE
 File.write("html/eng/index.html", license + "\n" + html_output)
   
 puts "Completed generating HTML, located in html/eng"
-
-puts File.read("html/eng/index.html")
-
-
-

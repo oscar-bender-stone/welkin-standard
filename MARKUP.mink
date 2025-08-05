@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
 // SPDX-License-Identifier: CC-BY-SA-4.0
+// vim: set filetype=asciidoc:
 
 = Minimal Ink (Mink) =
 
@@ -23,16 +24,15 @@ the best of both worlds:
   with tooling support
   from Pandoc, GitHub, and so on.
 
-Note that AsciiDoctor *does* [support Unicode],
-see https://docs.asciidoctor.org/asciidoc/latest/faq/#does-asciidoc-only-support-ascii-text
-[this FAQ].
+Note that AsciiDoctor *does* support Unicode,
+see https://docs.asciidoctor.org/asciidoc/latest/faq/#does-asciidoc-only-support-ascii-text[this FAQ].
 
 
 The Mink files
-(ending with the ``.mink`` extension),
+(ending with the `.mink` extension)
 are the base reference, 
 and can be consulted
-for ambiguities
+in face of ambiguities
 from HTML rendering.
 
 A CFG may be given to
@@ -45,7 +45,7 @@ but this is not provided here.
 
 ** Headers start on a new line
 	 are surrounded by a 
-	 set of delimiters <code> = </code>.
+	 set of delimiters `=`.
 	 Inside, there is a single space,
 	 followed by a non space character,
 	 followed by any number of characters,
@@ -58,4 +58,3 @@ but this is not provided here.
 
 * Each element is separated by a newline.
 
-// vim: set filetype=asciidoc:
