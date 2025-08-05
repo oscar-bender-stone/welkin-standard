@@ -3,7 +3,19 @@
 
 require "asciidoctor"
 
-Asciidoctor.convert_file "document/eng/index.mink", to_file: "html/eng/index.html", safe: :safe
+document = Asciidoctor.load_file("document/eng/index.mink")
+html_output = document.convert
 
-puts "Completed generating HTML, located in html/eng."
+license = <<~LICENSE
+  <!-- SPDX-FileCopyrightText: 2025 Oscar Bender-Stone@protonmail.com -->
+  <!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+LICENSE
+
+File.write("html/eng/index.html", license + "\n" + html_output)
+  
+puts "Completed generating HTML, located in html/eng"
+
+puts File.read("html/eng/index.html")
+
+
 
