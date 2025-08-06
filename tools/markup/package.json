@@ -1,0 +1,18 @@
+{
+  "name": "markup",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": "Converts the Welkin Standard to HTML.",
+  "dependencies": {
+    "@asciidoctor/core": "^3.0.4",
+    "ejs": "3.1.10",
+    "prettier": "3.6.2"
+  }
+}

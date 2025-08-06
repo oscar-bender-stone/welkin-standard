@@ -16,6 +16,11 @@ SPDX-FileCopyrightText = "2025 Oscar Bender-Stone <oscar-bender-stone@protonmail
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
-path = "markup/Gemfile.lock"
+path = "markup/package-lock.json"
+SPDX-FileCopyrightText = "2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "markup/package.json"
 SPDX-FileCopyrightText = "2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>"
 SPDX-License-Identifier = "CC0-1.0"
