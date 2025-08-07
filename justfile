@@ -32,7 +32,8 @@ _build_mm0:
 
 # Verify proof files with mm0-c
 mm0: _build_mm0
-	./tools/bin/mm0-rs proofs/main.mm1 proofs/main.mmb
-	./tools/bin/mm0-c proofs/main.mmb < proofs/main.mm0
+	tools/bin/mm0-rs compile proofs/main.mm1 proofs/main.mmb
+	tools/bin/mm0-c proofs/main.mmb < proofs/main.mm0
+	# NOTE: proofs are not yet written...
 	# @echo "Succesfullly proven all theorems!"
 	

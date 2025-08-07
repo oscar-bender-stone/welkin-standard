@@ -6,14 +6,11 @@
 These tools are used for several tasks
 in the Welkin Standard.
 
-You will need the following prequisites:
+You will need the following prerequistes:
 * [[Python 3.13|https://www.python.org/]].
 * [[uv|https://docs.astral.sh/uv/getting-started/installation/#standalone-installer]].
 
-Here are the available tasks:
-* Generate HTML files: <code> python main.py </code>.
-
-Tasks that should only be run automatically:
-* REUSE compliance: <code> reuse lint </code>.
+You can run `just` in any folder defined
+by this repository.
 
 // vim: set filetype=asciidoc:

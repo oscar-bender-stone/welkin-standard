@@ -1,10 +1,22 @@
 // SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
 // SPDX-License-Identifier: CC-BY-SA-4.0
-
-= The Welkin Standard =
-
-== Syntax ==
-
-== Bootstrap ==
-
 // vim: set filetype=asciidoc:
+
+== Introduction ==
+
+This document formalizes the Welkin information language.
+
+
+=== Design Goals ===
+
+* Unambiguous.
+
+
+=== Dependencies ===
+
+Welkin depends on _ existing standards:
+
+* ASCII.
+
+To make this document self-contained,
+all key aspects are included.
