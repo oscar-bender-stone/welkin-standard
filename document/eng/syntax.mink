@@ -4,16 +4,20 @@
 
 = Syntax =
 
+// TODO: introduce string substitution.
+// This will make contatenation easier.
+
 == Strings ==
 
 We introduce five symbols:
+
 * `0`, denoting the zero bit.
 
 * `1`, denoting one bit.
 
 * `B`, denoting a bit.
 
-* `E`, denoting the empty set.
+* `E`, denoting the empty web.
 
 * ``, denotating contatenation.
 
@@ -25,16 +29,20 @@ A *binary string* is defined recursively:
 * Base case: `0` and `1` are binary strings.
 
 * Recursive case: if `s` is a binary string,
-so `s.0` is a binary string and `s.1` is a binary string.
+then `s0` is a binary string and `s1` is a binary string.
 
 A *byte* is a sequence of eight bits: `0bBBBBBBBB`.
 
-An  *ASCII character* is a byte `0b0BBBBBBB`. A *printable character* is either `0b00BBBBBB` or `0b1111110`. Each printable character
+An  *ASCII character* is a byte `0b0BBBBBBB`. A *printable character* is either `0b00BBBBBB` or `0b1111110`.
+
+Each printable character
 is displayed in Tables 1-5,
 along with a symbol called
 a *grapheme*. Each table is denoted with a unique string called a *character class*.
 
-Table 1. Punctuation. Character Class: `\\p{Punct}`.
+*Table 1.* Punctuation. Character Class: `\\p{Punct}`.
+
+[cols=2]
 |===
    *Byte*    | *Grapheme*
 `0b00100001` | `!`
@@ -71,7 +79,7 @@ Table 1. Punctuation. Character Class: `\\p{Punct}`.
 `0b01111111` | `~`
 |===
 
-Table 2. Upper-case letters. Character Class: `[A-Z]`.
+*Table 2.* Upper-case letters. Character Class: `[A-Z]`.
 |===
 `0b01000001` | `A`
 `0b01000010` | `B`
@@ -101,7 +109,7 @@ Table 2. Upper-case letters. Character Class: `[A-Z]`.
 `0b01011010` | `Z`
 |===
 
-Table 3. Lower-case letters. Character Class: `[a-z]`.
+*Table 3.* Lower-case letters. Character Class: `[a-z]`.
 |===
 `0b01100001` | `a`
 `0b01100010` | `b`
@@ -131,7 +139,7 @@ Table 3. Lower-case letters. Character Class: `[a-z]`.
 `0b01011010` | `z`
 |===
 
-Table 4. Digits. Character Class: `[0-9]`.
+*Table 4.* Digits. Character Class: `[0-9]`.
 |===
 `0b01100000` | `0`
 `0b01100001` | `1`
@@ -198,6 +206,8 @@ Additionally, we support two other systems:
 Each digit translates to binary as follows:
 
 Table 5. Decimal to Binary.
+
+[cols=2]
 |===
 `0` | `0b0000`
 `1` | `0b0001`
@@ -217,6 +227,9 @@ lower-case letters `a`, `b`, `c`, `d`, `e`, or `f`,
 or upper-case letters `A`, `B`, `C`, `D`, `E`, and `F`.
 Each digit translates to binary as follows:
 
+Table 6. Hexadecimal to Binary.
+
+[cols=2]
 |===
 `0` | `0b0000`
 `1` | `0b0001`
@@ -268,3 +281,81 @@ of an upper-case hexadecimal number.
 
 Hexadecimal numbers are denoted with the prefix `0x`.
 
+== Grammar ==
+
+Instead of EBNF,
+the grammar is bootstrapped
+in a limited subset of Welkin.
+This subset can be *completely*
+described by a regular expression,
+or in a simple recursive statement.
+This is called the Minimal Grammar.
+
+// TODO: make sure to clarify this statement.
+// A Turing machine *is* required
+// for the underlying semantics,
+// particularly for merging
+// duplicate terms
+// or executing any grammars.
+// Substitution is implicit,
+// requiring this Standard to define.
+
+In fact, the *entire* semantics
+can be expressed with the Minimal Grammar;
+this is done in the Boostrap.
+However, for expressivity,
+we include the Full Grammar,
+allowing for arbitrary nesting
+of terms.
+
+=== Minimal Grammar ===
+
+// TODO: clean this up.
+// Make sure it is readable!
+
+For simplicity, we exclude
+most of the concepts defined in Tokens.
+
+The *Minimal Welkin* language is defined
+as follows:
+
+* A part is either `[a-z]` or `[A-Z]`.
+
+* An arrow is a sequence `(p1 "--" p2? "-->" p3)`,
+where `p1`, `p2`, and `p3` are parts.
+
+* A web is a sequence of either parts or arrows,
+enclosed by brackets (`"{"` and `"}"`).
+This sequence may be empty. In this case,
+the web is denoted by `{}`.
+
+* A term is either a part, a web,
+or an arc.
+
+* A "Minimal Welkin" string is
+defined recursively:
+
+** Base case: any term.
+
+** Recursive case: if `s`
+is an accepted string
+and `t` is a term,
+then `s,t` is accepted
+by the grammar.
+
+=== Full Grammar ===
+
+Refer to Tokens for more details
+on literals and number systems.
+
+// TODO: finish!
+
+`
+start --> terms
+`
+
+It can be readily shown that the full grammar
+is compatible with the Minimal Grammar.
+Additionally, this grammar is *LL(0)*,
+ensuring it is unambiguous.
+Refer to the Bootstrap for complete proofs.
