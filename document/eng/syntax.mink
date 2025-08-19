@@ -6,25 +6,145 @@
 
 == Strings ==
 
-We introduce four symbols:
+We introduce five symbols:
 - `0`, denoting the zero bit.
 - `1`, denoting one bit.
-- `b`, denoting a bit.
-- `B`, denoting a byte.
-- `.`, denoting concatenation.
+- `B`, denoting a bit.
+- `E`, denoting the empty set.
+- ``, denotating contatenation.
 
-A `bit` `b` is either `0` or `1`.
+A `bit` `B` is either `0` or `1`.
+As notation, a sequence of bits starts with `0b`. Bits are read from left to right.
 
-A *string* is defined recursively:
-Base case: `0` and `1` are strings.
-Recursive case: if `s` is a string,
-so `s.0` is a string and `s.1` is a string.
+A *binary string* is defined recursively:
+* Base case: `0` and `1` are binary strings.
+* Recursive case: if `s` is a binary string,
+so `s.0` is a binary string and `s.1` is a binary string.
 
-A *byte* is a sequence of eight bits: `b.b.b.b.b.b.b.b`.
+A *byte* is a sequence of eight bits: `0bBBBBBBBB`.
 
-== ASCII ==
+An  *ASCII character* is a byte 0bbbbbbb`. A *printable character* is either `00bbbbbb` or `1111110`. Each printable character
+is displayed in Tables 1-5,
+along with a symbol called
+a *grapheme*. Each table is denoted with a unique string called a *character class*.
 
-An *(ASCII) character* is a byte `0bbbbbbb`.
+Table 1. Punctuation. Character Class: `[\\p{Punct}]`.
+|===
+   *Byte*   | *Grapheme*
+`0b00100001` | `!`
+`0b00100010` | `"`
+`0b00100011` | `#`
+`0b00100100` | `$`
+`0b00100101` | `%`
+`0b00100110` | `&`
+`0b00100111` | `'`
+`0b00101000` | `(`
+`0b00101001` | `)`
+`0b00101010` | `*`
+`0b00101011` | `+`
+`0b00101100` | `,`
+`0b00101101` | `-`
+`0b00101110` | `.`
+`0b00101111` | `/`
+`0b01111010` | `:`
+`0b01111011` | `;`
+`0b01111100` | `<`
+`0b01111101` | `=`
+`0b01111110` | `>`
+`0b01001111` | `?`
+`0b01000000` | `@`
+`0b01010011` | `[`
+`0b01011100` | `\`
+`0b01001101` | `]`
+`0b01001110` | `^`
+`0b01001111` | `_`
+`0b01110000` | `+ ` +`
+`0b01110000` | `{`
+`0b01111101` | `|`
+`0b01111110` | `}`
+`0b01111111` | `~`
+|===
 
-All ASCII strings will be
-written with double quotes.
+Table 2. Upper-case letters. Character Class: `[A-Z]`.
+|===
+`0b01000001` | `A`
+`0b01000010` | `B`
+`0b01000011` | `C`
+`0b01000100` | `D`
+`0b01000101` | `E`
+`0b01000110` | `F`
+`0b01000111` | `G`
+`0b01001000` | `H`
+`0b01001001` | `I`
+`0b01001010` | `J`
+`0b01001011` | `K`
+`0b01001100` | `L`
+`0b01001101` | `M`
+`0b01001110` | `N`
+`0b01001111` | `O`
+`0b01010000` | `P`
+`0b01010001` | `Q`
+`0b01010010` | `R`
+`0b01010011` | `S`
+`0b01010100` | `T`
+`0b01010101` | `U`
+`0b01010110` | `V`
+`0b01010111` | `W`
+`0b01011000` | `X`
+`0b01011001` | `Y`
+`0b01011010` | `Z`
+|===
+
+Table 3. Lower-case letters. Character Class: `[a-z]`.
+|===
+`0b01100001` | `a`
+`0b01100010` | `b`
+`0b01100011` | `c`
+`0b01100100` | `d`
+`0b01100101` | `e`
+`0b01100110` | `f`
+`0b01100111` | `g`
+`0b01101000` | `h`
+`0b01101001` | `i`
+`0b01101010` | `j`
+`0b01101011` | `k`
+`0b01101100` | `l`
+`0b01101101` | `m`
+`0b01101110` | `n`
+`0b01101111` | `o`
+`0b01110000` | `p`
+`0b01110001` | `q`
+`0b01110010` | `r`
+`0b01110011` | `s`
+`0b01110100` | `t`
+`0b01110101` | `u`
+`0b01110110` | `v`
+`0b01110111` | `w`
+`0b01111000` | `x`
+`0b01111001` | `y`
+`0b01011010` | `z`
+|===
+
+Table 4. Digits.
+|===
+`0b01100000` | `0`
+`0b01100001` | `1`
+`0b01100010` | `2`
+`0b01100011` | `3`
+`0b01100100` | `4`
+`0b01100101` | `5`
+`0b01100110` | `6`
+`0b01100111` | `7`
+`0b01101000` | `8`
+`0b01101001` | `9`
+|===
+
+An *ASCII string* is defined recursively:
+* Base case: each ASCII character `0bbbbbbb` is an ASCII string.
+* Recursive case: if `s` is an ASCII string, and `c` is an ASCII character, then `sc` is an ASCII string.
+
+It can be readily verified that each ASCII string is a binary string. See Bootstrap for a complete proof.
+
+== Tokens ==
+
+The key building blocks of the syntax include reserved symbols. In order to use these symbols, we introduce special syntax for literal strings.
