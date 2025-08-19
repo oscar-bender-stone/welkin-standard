@@ -2,19 +2,19 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 // vim: set filetype=asciidoc:
 
-== Introduction ==
+= Introduction =
 
 This document formalizes the Welkin information language.
 
-
-=== Design Goals ===
+== Design Goals ==
 
 * Unambiguous.
+* Ontology.
+* Universal.
 
+== Dependencies ==
 
-=== Dependencies ===
-
-Welkin depends on _ existing standards:
+Welkin depends on one existing standard:
 
 * ASCII.
 

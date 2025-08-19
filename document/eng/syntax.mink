@@ -1,0 +1,30 @@
+// SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// vim: set filetype=asciidoc:
+
+= Syntax =
+
+== Strings ==
+
+We introduce four symbols:
+- `0`, denoting the zero bit.
+- `1`, denoting one bit.
+- `b`, denoting a bit.
+- `B`, denoting a byte.
+- `.`, denoting concatenation.
+
+A `bit` `b` is either `0` or `1`.
+
+A *string* is defined recursively:
+Base case: `0` and `1` are strings.
+Recursive case: if `s` is a string,
+so `s.0` is a string and `s.1` is a string.
+
+A *byte* is a sequence of eight bits: `b.b.b.b.b.b.b.b`.
+
+== ASCII ==
+
+An *(ASCII) character* is a byte `0bbbbbbb`.
+
+All ASCII strings will be
+written with double quotes.

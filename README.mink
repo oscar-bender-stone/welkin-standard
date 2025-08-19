@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: 2025 Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
 // SPDX-License-Identifier: CC-BY-SA-4.0
+// vim: set filetype=asciidoc:
 
 = The Welkin Standard =
 
@@ -12,7 +13,7 @@ For details about the Mink markup language
 used in this repository, see xref:MARKUP.mink[].
 In case of ambiguities with HTML rendering,
 the Mink source files 
-serve as the de facto base reference.
+serve as the authoritative reference.
 
 == Project Organization ==
 
@@ -29,4 +30,3 @@ please see xref:tools[].
 
 2025 Copyright Oscar Bender-Stone <oscar-bender-stone@protonmail.com>
 
-// vim: set filetype=asciidoc:
