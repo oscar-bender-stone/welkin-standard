@@ -24,6 +24,851 @@
     &lt;p&gt;ASCII.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div
     class=&#34;paragraph&#34;&gt; &lt;p&gt;To make this document self-contained,
     all key aspects are included.&lt;/p&gt; &lt;/div&gt; &lt;/div&gt;
-    &lt;/div&gt;
+    &lt;/div&gt;&lt;div class=&#34;sect1&#34;&gt; &lt;h2
+    id=&#34;_strings&#34;&gt;Strings&lt;/h2&gt; &lt;div
+    class=&#34;sectionbody&#34;&gt; &lt;div class=&#34;paragraph&#34;&gt;
+    &lt;p&gt;We introduce five symbols:&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;0&lt;/code&gt;, denoting the zero bit.&lt;/p&gt;
+    &lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;1&lt;/code&gt;, denoting one
+    bit.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;B&lt;/code&gt;,
+    denoting a bit.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;E&lt;/code&gt;, denoting the empty web.&lt;/p&gt;
+    &lt;/li&gt; &lt;li&gt; &lt;p&gt;``, denotating contatenation.&lt;/p&gt;
+    &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
+    &lt;p&gt;A &lt;code&gt;bit&lt;/code&gt; &lt;code&gt;B&lt;/code&gt; is either
+    &lt;code&gt;0&lt;/code&gt; or &lt;code&gt;1&lt;/code&gt;. As notation, a
+    sequence of bits starts with &lt;code&gt;0b&lt;/code&gt;. Bits are read from
+    left to right.&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
+    &lt;p&gt;A &lt;strong&gt;binary string&lt;/strong&gt; is defined
+    recursively:&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;ulist&#34;&gt;
+    &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case: &lt;code&gt;0&lt;/code&gt; and
+    &lt;code&gt;1&lt;/code&gt; are binary strings.&lt;/p&gt; &lt;/li&gt;
+    &lt;li&gt; &lt;p&gt;Recursive case: if &lt;code&gt;s&lt;/code&gt; is a
+    binary string, then &lt;code&gt;s0&lt;/code&gt; is a binary string and
+    &lt;code&gt;s1&lt;/code&gt; is a binary string.&lt;/p&gt; &lt;/li&gt;
+    &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt; &lt;p&gt;A
+    &lt;strong&gt;byte&lt;/strong&gt; is a sequence of eight bits:
+    &lt;code&gt;0bBBBBBBBB&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;An &lt;strong&gt;ASCII
+    character&lt;/strong&gt; is a byte &lt;code&gt;0b0BBBBBBB&lt;/code&gt;. A
+    &lt;strong&gt;printable character&lt;/strong&gt; is either
+    &lt;code&gt;0b00BBBBBB&lt;/code&gt; or
+    &lt;code&gt;0b1111110&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;Each printable character is displayed
+    in Tables 1-5, along with a symbol called a
+    &lt;strong&gt;grapheme&lt;/strong&gt;. Each table is denoted with a unique
+    string called a &lt;strong&gt;character class&lt;/strong&gt;.&lt;/p&gt;
+    &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
+    &lt;p&gt;&lt;strong&gt;Table 1.&lt;/strong&gt; Punctuation. Character Class:
+    &lt;code&gt;\\p{Punct}&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;table
+    class=&#34;tableblock frame-all grid-all stretch&#34;&gt; &lt;colgroup&gt;
+    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;col style=&#34;width:
+    50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td
+    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;strong&gt;Byte&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;strong&gt;Grapheme&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;!&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;&#34;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;#&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;$&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;%&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;&amp;amp;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;(&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;)&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;*&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;+&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;,&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;-&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;.&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;/&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;:&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;&amp;lt;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;=&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;?&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;@&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;[&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01011100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;\&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;]&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;^&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;_&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;+ `
+    +&lt;/code&gt;&lt;/p&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td
+    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;{&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;`&lt;/p&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;`&lt;/p&gt;&lt;/td&gt; &lt;td
+    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;}&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;&lt;strong&gt;Table 2.&lt;/strong&gt;
+    Upper-case letters. Character Class:
+    &lt;code&gt;[A-Z]&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;table
+    class=&#34;tableblock frame-all grid-all stretch&#34;&gt; &lt;colgroup&gt;
+    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;col style=&#34;width:
+    50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td
+    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;A&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;B&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;C&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;D&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;E&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;F&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;G&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;H&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;I&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;J&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;K&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;L&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;M&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;N&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;O&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;P&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;Q&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;R&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;S&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;T&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;U&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;V&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;W&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01011000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;X&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01011001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;Y&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01011010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;Z&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;&lt;strong&gt;Table 3.&lt;/strong&gt;
+    Lower-case letters. Character Class:
+    &lt;code&gt;[a-z]&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;table
+    class=&#34;tableblock frame-all grid-all stretch&#34;&gt; &lt;colgroup&gt;
+    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;col style=&#34;width:
+    50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td
+    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;a&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;b&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;c&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;d&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;e&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;f&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;g&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;h&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;i&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;j&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;k&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;l&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;m&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;n&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;o&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;p&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;q&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;r&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;s&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;t&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;u&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;v&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;w&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01011010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;z&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;&lt;strong&gt;Table 4.&lt;/strong&gt;
+    Digits. Character Class: &lt;code&gt;[0-9]&lt;/code&gt;.&lt;/p&gt;
+    &lt;/div&gt; &lt;table class=&#34;tableblock frame-all grid-all
+    stretch&#34;&gt; &lt;colgroup&gt; &lt;col style=&#34;width: 50%;&#34;&gt;
+    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt;
+    &lt;tr&gt; &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;1&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;2&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;3&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;4&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;5&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;6&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;7&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;8&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;9&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;Additionally, there are composite
+    character classes:&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;*&lt;code&gt;\w&lt;/code&gt;: either
+    &lt;code&gt;[a-z]&lt;/code&gt;, &lt;code&gt;[A-z]&lt;/code&gt;, or
+    &lt;code&gt;[0-9]&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;An &lt;strong&gt;ASCII
+    string&lt;/strong&gt; is defined recursively:&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case: each
+    ASCII character (&lt;code&gt;0b0BBBBBBB&lt;/code&gt;) is an ASCII
+    string.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Recursive case: if
+    &lt;code&gt;s&lt;/code&gt; is an ASCII string, and
+    &lt;code&gt;c&lt;/code&gt; is an ASCII character, then
+    &lt;code&gt;sc&lt;/code&gt; is an ASCII string.&lt;/p&gt; &lt;/li&gt;
+    &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt; &lt;p&gt;It
+    can be readily verified that each ASCII string is a binary string. See
+    Bootstrap for a complete proof.&lt;/p&gt; &lt;/div&gt; &lt;/div&gt;
+    &lt;/div&gt; &lt;div class=&#34;sect1&#34;&gt; &lt;h2
+    id=&#34;_tokens&#34;&gt;Tokens&lt;/h2&gt; &lt;div
+    class=&#34;sectionbody&#34;&gt; &lt;div class=&#34;paragraph&#34;&gt;
+    &lt;p&gt;The key building blocks of the syntax include reserved symbols. In
+    order to encode these symbols for users, we introduce special syntax
+    involving quotes and prefixes.&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;sect2&#34;&gt; &lt;h3
+    id=&#34;_literals&#34;&gt;Literals&lt;/h3&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;A &lt;strong&gt;single quoted literal
+    string&lt;/strong&gt; is defined recursively.&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case: the
+    following are single quoted literal strings:&lt;/p&gt; &lt;div
+    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;(in other words,
+    all characters &lt;strong&gt;except&lt;/strong&gt;
+    &lt;code&gt;&#39;&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
+    &lt;p&gt;(&lt;code&gt;\w&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;\&#39;&lt;/code&gt;&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+    &lt;/div&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Recursive step: if
+    &lt;code&gt;l&lt;/code&gt; is a single quoted string and
+    &lt;code&gt;c&lt;/code&gt; is a binary string satisfying the base case, then
+    &lt;code&gt;l.c&lt;/code&gt; is a single quoted string.&lt;/p&gt;
+    &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
+    &lt;p&gt;A &lt;strong&gt;double quoted literal string&lt;/strong&gt; is
+    defined recursively.&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case: the
+    following are single quoted literal strings:&lt;/p&gt; &lt;div
+    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;(In other words,
+    all characters &lt;strong&gt;except&lt;/strong&gt;
+    &lt;code&gt;&#34;&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
+    &lt;p&gt;(&lt;code&gt;\w&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;\&#34;&lt;/code&gt;&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+    &lt;/div&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Recursive step: if
+    &lt;code&gt;l&lt;/code&gt; is a double quoted string and
+    &lt;code&gt;c&lt;/code&gt; is a binary string satisfying the base case, then
+    &lt;code&gt;l.c&lt;/code&gt; is a double quoted string.&lt;/p&gt;
+    &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
+    &lt;p&gt;A &lt;strong&gt;literal string&lt;/strong&gt; is a literal single
+    quoted string or a literal double quoted string.&lt;/p&gt; &lt;/div&gt;
+    &lt;/div&gt; &lt;div class=&#34;sect2&#34;&gt; &lt;h3
+    id=&#34;_number_systems&#34;&gt;Number Systems&lt;/h3&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;As with above, binary strings start
+    with &lt;code&gt;&#34;0b&#34;&lt;/code&gt;. Additionally, we support two
+    other systems:&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;ulist&#34;&gt;
+    &lt;ul&gt; &lt;li&gt; &lt;p&gt;Decimal: denoted with digits
+    &lt;code&gt;[0-9]&lt;/code&gt;. Each digit translates to binary as
+    follows:&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;Table 5. Decimal to Binary.&lt;/p&gt;
+    &lt;/div&gt; &lt;table class=&#34;tableblock frame-all grid-all
+    stretch&#34;&gt; &lt;colgroup&gt; &lt;col style=&#34;width: 50%;&#34;&gt;
+    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt;
+    &lt;tr&gt; &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;1&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;2&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;3&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;4&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;5&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;6&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;7&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;8&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;9&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div class=&#34;ulist&#34;&gt;
+    &lt;ul&gt; &lt;li&gt; &lt;p&gt;Hexadecimal: a
+    &lt;strong&gt;hexadecimal&lt;/strong&gt; digit is denoted by: either
+    &lt;code&gt;[0-9]&lt;/code&gt;, lower-case letters
+    &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt;,
+    &lt;code&gt;c&lt;/code&gt;, &lt;code&gt;d&lt;/code&gt;,
+    &lt;code&gt;e&lt;/code&gt;, or &lt;code&gt;f&lt;/code&gt;, or upper-case
+    letters &lt;code&gt;A&lt;/code&gt;, &lt;code&gt;B&lt;/code&gt;,
+    &lt;code&gt;C&lt;/code&gt;, &lt;code&gt;D&lt;/code&gt;,
+    &lt;code&gt;E&lt;/code&gt;, and &lt;code&gt;F&lt;/code&gt;. Each digit
+    translates to binary as follows:&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+    &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt; &lt;p&gt;Table 6.
+    Hexadecimal to Binary.&lt;/p&gt; &lt;/div&gt; &lt;table
+    class=&#34;tableblock frame-all grid-all stretch&#34;&gt; &lt;colgroup&gt;
+    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;col style=&#34;width:
+    50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td
+    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;1&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;2&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;3&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;4&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;5&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;6&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;7&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;8&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;9&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;a&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;A&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;b&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;B&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;c&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;C&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;d&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;D&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;e&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;E&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;f&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
+    valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;F&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
+    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;A hexadecimal number may be written
+    with all lower-case letters, or all upper-case letters. More
+    precisely:&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;ulist&#34;&gt;
+    &lt;ul&gt; &lt;li&gt; &lt;p&gt;A &lt;strong&gt;lower-case&lt;/strong&gt;
+    hexadecimal number is defined recursively:&lt;/p&gt; &lt;div
+    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case:
+    &lt;code&gt;h&lt;/code&gt; is either &lt;code&gt;[0-9]&lt;/code&gt; or
+    &lt;code&gt;[a-z]&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
+    &lt;p&gt;Recursive case: if &lt;code&gt;h&lt;/code&gt; is a lower-case
+    hexadecimal number and &lt;code&gt;d&lt;/code&gt; is a digit satisfying the
+    above base case, then &lt;code&gt;hd&lt;/code&gt; is a lower-case
+    hexadecimal number.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;
+    &lt;/li&gt; &lt;li&gt; &lt;p&gt;An &lt;strong&gt;upper-case&lt;/strong&gt;
+    hexadecimal number is defined recursively:&lt;/p&gt; &lt;div
+    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case:
+    &lt;code&gt;h&lt;/code&gt; is either &lt;code&gt;[0-9]&lt;/code&gt; or
+    &lt;code&gt;[A-Z]&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
+    &lt;p&gt;Recursive case: if &lt;code&gt;h&lt;/code&gt; is a upper-case
+    hexadecimal number and &lt;code&gt;d&lt;/code&gt; is a digit satisfying the
+    above base case, then &lt;code&gt;hd&lt;/code&gt; is a upper-case
+    hexadecimal number.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;
+    &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
+    &lt;p&gt;A &lt;strong&gt;hexadecimal number&lt;/strong&gt; is either a
+    lower-cased hexadecimal number of an upper-case hexadecimal
+    number.&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
+    &lt;p&gt;Hexadecimal numbers are denoted with the prefix
+    &lt;code&gt;0x&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;/div&gt;
+    &lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;sect1&#34;&gt; &lt;h2
+    id=&#34;_grammar&#34;&gt;Grammar&lt;/h2&gt; &lt;div
+    class=&#34;sectionbody&#34;&gt; &lt;div class=&#34;paragraph&#34;&gt;
+    &lt;p&gt;Instead of EBNF, the grammar is bootstrapped in a limited subset of
+    Welkin. This subset can be &lt;strong&gt;completely&lt;/strong&gt; described
+    by a regular expression, or in a simple recursive statement. This is called
+    the Minimal Grammar.&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;In fact, the
+    &lt;strong&gt;entire&lt;/strong&gt; semantics can be expressed with the
+    Minimal Grammar; this is done in the Boostrap. However, for expressivity, we
+    include the Full Grammar, allowing for arbitrary nesting of terms.&lt;/p&gt;
+    &lt;/div&gt; &lt;div class=&#34;sect2&#34;&gt; &lt;h3
+    id=&#34;_minimal_grammar&#34;&gt;Minimal Grammar&lt;/h3&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;For simplicity, we exclude most of
+    the concepts defined in Tokens.&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;The &lt;strong&gt;Minimal
+    Welkin&lt;/strong&gt; language is defined as follows:&lt;/p&gt; &lt;/div&gt;
+    &lt;div class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A part is
+    either &lt;code&gt;[a-z]&lt;/code&gt; or
+    &lt;code&gt;[A-Z]&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An
+    arrow is a sequence &lt;code&gt;(p1 &#34;--&#34; p2? &#34;-&amp;#8594;&#34;
+    p3)&lt;/code&gt;, where &lt;code&gt;p1&lt;/code&gt;,
+    &lt;code&gt;p2&lt;/code&gt;, and &lt;code&gt;p3&lt;/code&gt; are
+    parts.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A web is a sequence of
+    either parts or arrows, enclosed by brackets
+    (&lt;code&gt;&#34;{&#34;&lt;/code&gt; and
+    &lt;code&gt;&#34;}&#34;&lt;/code&gt;). This sequence may be empty. In this
+    case, the web is denoted by &lt;code&gt;{}&lt;/code&gt;.&lt;/p&gt;
+    &lt;/li&gt; &lt;li&gt; &lt;p&gt;A term is either a part, a web, or an
+    arc.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A &#34;Minimal Welkin&#34;
+    string is defined recursively:&lt;/p&gt; &lt;div class=&#34;ulist&#34;&gt;
+    &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case: any term.&lt;/p&gt; &lt;/li&gt;
+    &lt;li&gt; &lt;p&gt;Recursive case: if &lt;code&gt;s&lt;/code&gt; is an
+    accepted string and &lt;code&gt;t&lt;/code&gt; is a term, then
+    &lt;code&gt;s,t&lt;/code&gt; is accepted by the grammar.&lt;/p&gt;
+    &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;
+    &lt;/div&gt; &lt;div class=&#34;sect2&#34;&gt; &lt;h3
+    id=&#34;_full_grammar&#34;&gt;Full Grammar&lt;/h3&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;Refer to Tokens for more details on
+    literals and number systems.&lt;/p&gt; &lt;/div&gt; &lt;div
+    class=&#34;paragraph&#34;&gt; &lt;p&gt;` start -&amp;#8594; terms
+    `&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt; &lt;p&gt;It
+    can be readily shown that the full grammar is compatible with the Minimal
+    Grammar. Additionally, this grammar is &lt;strong&gt;LL(0)&lt;/strong&gt;,
+    ensuring it is unambiguous. Refer to the Bootstrap for complete
+    proofs.&lt;/p&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;
   </body>
 </html>
