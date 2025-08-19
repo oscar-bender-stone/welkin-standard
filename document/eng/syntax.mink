@@ -7,30 +7,36 @@
 == Strings ==
 
 We introduce five symbols:
-- `0`, denoting the zero bit.
-- `1`, denoting one bit.
-- `B`, denoting a bit.
-- `E`, denoting the empty set.
-- ``, denotating contatenation.
+* `0`, denoting the zero bit.
+
+* `1`, denoting one bit.
+
+* `B`, denoting a bit.
+
+* `E`, denoting the empty set.
+
+* ``, denotating contatenation.
 
 A `bit` `B` is either `0` or `1`.
 As notation, a sequence of bits starts with `0b`. Bits are read from left to right.
 
 A *binary string* is defined recursively:
+
 * Base case: `0` and `1` are binary strings.
+
 * Recursive case: if `s` is a binary string,
 so `s.0` is a binary string and `s.1` is a binary string.
 
 A *byte* is a sequence of eight bits: `0bBBBBBBBB`.
 
-An  *ASCII character* is a byte 0bbbbbbb`. A *printable character* is either `00bbbbbb` or `1111110`. Each printable character
+An  *ASCII character* is a byte `0b0BBBBBBB`. A *printable character* is either `0b00BBBBBB` or `0b1111110`. Each printable character
 is displayed in Tables 1-5,
 along with a symbol called
 a *grapheme*. Each table is denoted with a unique string called a *character class*.
 
-Table 1. Punctuation. Character Class: `[\\p{Punct}]`.
+Table 1. Punctuation. Character Class: `\\p{Punct}`.
 |===
-   *Byte*   | *Grapheme*
+   *Byte*    | *Grapheme*
 `0b00100001` | `!`
 `0b00100010` | `"`
 `0b00100011` | `#`
@@ -125,7 +131,7 @@ Table 3. Lower-case letters. Character Class: `[a-z]`.
 `0b01011010` | `z`
 |===
 
-Table 4. Digits.
+Table 4. Digits. Character Class: `[0-9]`.
 |===
 `0b01100000` | `0`
 `0b01100001` | `1`
@@ -139,12 +145,126 @@ Table 4. Digits.
 `0b01101001` | `9`
 |===
 
+Additionally, there are composite character classes:
+
+*`\w`: either `[a-z]`, `[A-z]`, or `[0-9]`.
+
 An *ASCII string* is defined recursively:
-* Base case: each ASCII character `0bbbbbbb` is an ASCII string.
+
+* Base case: each ASCII character (`0b0BBBBBBB`) is an ASCII string.
+
 * Recursive case: if `s` is an ASCII string, and `c` is an ASCII character, then `sc` is an ASCII string.
 
 It can be readily verified that each ASCII string is a binary string. See Bootstrap for a complete proof.
 
 == Tokens ==
 
-The key building blocks of the syntax include reserved symbols. In order to use these symbols, we introduce special syntax for literal strings.
+The key building blocks of the syntax include reserved symbols. In order to encode these symbols for users, we introduce special syntax involving quotes
+and prefixes.
+
+=== Literals ===
+
+A *single quoted literal string* is defined recursively.
+
+* Base case: the following are single quoted literal strings:
+** (in other words, all characters *except* `'`).
+** (`\w`).
+** `\'`
+
+* Recursive step: if `l` is a single quoted string
+and `c` is a binary string satisfying the base case,
+then `l.c` is a single quoted string.
+
+A *double quoted literal string* is defined recursively.
+
+* Base case: the following are single quoted literal strings:
+** (In other words, all characters *except* `"`).
+** (`\w`).
+** `\"`
+
+* Recursive step: if `l` is a double quoted string
+and `c` is a binary string satisfying the base case,
+then `l.c` is a double quoted string.
+
+A *literal string* is a literal single quoted string
+or a literal double quoted string.
+
+=== Number Systems ===
+
+As with above, binary strings start with `"0b"`.
+Additionally, we support two other systems:
+
+* Decimal: denoted with digits `[0-9]`.
+Each digit translates to binary as follows:
+
+Table 5. Decimal to Binary.
+|===
+`0` | `0b0000`
+`1` | `0b0001`
+`2` | `0b0010`
+`3` | `0b0011`
+`4` | `0b0100`
+`5` | `0b0101`
+`6` | `0b0110`
+`7` | `0b0111`
+`8` | `0b1000`
+`9` | `0b1001`
+|===
+
+* Hexadecimal: a *hexadecimal* digit is denoted by:
+either `[0-9]`,
+lower-case letters `a`, `b`, `c`, `d`, `e`, or `f`,
+or upper-case letters `A`, `B`, `C`, `D`, `E`, and `F`.
+Each digit translates to binary as follows:
+
+|===
+`0` | `0b0000`
+`1` | `0b0001`
+`2` | `0b0010`
+`3` | `0b0011`
+`4` | `0b0100`
+`5` | `0b0101`
+`6` | `0b0110`
+`7` | `0b0111`
+`8` | `0b1000`
+`9` | `0b1001`
+`a` | `0b1010`
+`A` | `0b1010`
+`b` | `0b1011`
+`B` | `0b1011`
+`c` | `0b1100`
+`C` | `0b1100`
+`d` | `0b1101`
+`D` | `0b1101`
+`e` | `0b1110`
+`E` | `0b1110`
+`f` | `0b1111`
+`F` | `0b1111`
+|===
+
+
+A hexadecimal number may be written
+with all lower-case letters, or all upper-case
+letters. More precisely:
+
+* A *lower-case* hexadecimal number is defined recursively:
+
+** Base case: `h` is either `[0-9]` or `[a-z]`.
+
+** Recursive case: if `h` is a lower-case hexadecimal number
+and `d` is a digit satisfying the above base case,
+then `hd` is a lower-case hexadecimal number.
+
+* An *upper-case* hexadecimal number is defined recursively:
+
+** Base case: `h` is either `[0-9]` or `[A-Z]`.
+
+** Recursive case: if `h` is a upper-case hexadecimal number
+and `d` is a digit satisfying the above base case,
+then `hd` is a upper-case hexadecimal number.
+
+A *hexadecimal number* is either a lower-cased hexadecimal number
+of an upper-case hexadecimal number.
+
+Hexadecimal numbers are denoted with the prefix `0x`.
+
