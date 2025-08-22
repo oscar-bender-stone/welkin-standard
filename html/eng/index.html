@@ -3,872 +3,1724 @@
 
 <!DOCTYPE html>
 <html>
+  <style>
+    body {
+      code,
+      pre,
+      kbd,
+      samp {
+        font-family: monospace, monospace;
+        font-size: 1em;
+      }
+    }
+  </style>
   <head>
     <title>The Welkin Standard</title>
   </head>
   <body>
-    &lt;div id=&#34;preamble&#34;&gt; &lt;div class=&#34;sectionbody&#34;&gt;
-    &lt;div class=&#34;paragraph&#34;&gt; &lt;p&gt;This document formalizes the
-    Welkin information language.&lt;/p&gt; &lt;/div&gt; &lt;/div&gt;
-    &lt;/div&gt; &lt;div class=&#34;sect1&#34;&gt; &lt;h2
-    id=&#34;_design_goals&#34;&gt;Design Goals&lt;/h2&gt; &lt;div
-    class=&#34;sectionbody&#34;&gt; &lt;div class=&#34;ulist&#34;&gt; &lt;ul&gt;
-    &lt;li&gt; &lt;p&gt;Unambiguous.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
-    &lt;p&gt;Ontology.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
-    &lt;p&gt;Universal.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;
-    &lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;sect1&#34;&gt; &lt;h2
-    id=&#34;_dependencies&#34;&gt;Dependencies&lt;/h2&gt; &lt;div
-    class=&#34;sectionbody&#34;&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;Welkin depends on one existing standard:&lt;/p&gt; &lt;/div&gt;
-    &lt;div class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt;
-    &lt;p&gt;ASCII.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;To make this document self-contained,
-    all key aspects are included.&lt;/p&gt; &lt;/div&gt; &lt;/div&gt;
-    &lt;/div&gt;&lt;div class=&#34;sect1&#34;&gt; &lt;h2
-    id=&#34;_strings&#34;&gt;Strings&lt;/h2&gt; &lt;div
-    class=&#34;sectionbody&#34;&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;We introduce five symbols:&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;0&lt;/code&gt;, denoting the zero bit.&lt;/p&gt;
-    &lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;1&lt;/code&gt;, denoting one
-    bit.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;B&lt;/code&gt;,
-    denoting a bit.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;E&lt;/code&gt;, denoting the empty web.&lt;/p&gt;
-    &lt;/li&gt; &lt;li&gt; &lt;p&gt;``, denotating contatenation.&lt;/p&gt;
-    &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;A &lt;code&gt;bit&lt;/code&gt; &lt;code&gt;B&lt;/code&gt; is either
-    &lt;code&gt;0&lt;/code&gt; or &lt;code&gt;1&lt;/code&gt;. As notation, a
-    sequence of bits starts with &lt;code&gt;0b&lt;/code&gt;. Bits are read from
-    left to right.&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;A &lt;strong&gt;binary string&lt;/strong&gt; is defined
-    recursively:&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;ulist&#34;&gt;
-    &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case: &lt;code&gt;0&lt;/code&gt; and
-    &lt;code&gt;1&lt;/code&gt; are binary strings.&lt;/p&gt; &lt;/li&gt;
-    &lt;li&gt; &lt;p&gt;Recursive case: if &lt;code&gt;s&lt;/code&gt; is a
-    binary string, then &lt;code&gt;s0&lt;/code&gt; is a binary string and
-    &lt;code&gt;s1&lt;/code&gt; is a binary string.&lt;/p&gt; &lt;/li&gt;
-    &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt; &lt;p&gt;A
-    &lt;strong&gt;byte&lt;/strong&gt; is a sequence of eight bits:
-    &lt;code&gt;0bBBBBBBBB&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;An &lt;strong&gt;ASCII
-    character&lt;/strong&gt; is a byte &lt;code&gt;0b0BBBBBBB&lt;/code&gt;. A
-    &lt;strong&gt;printable character&lt;/strong&gt; is either
-    &lt;code&gt;0b00BBBBBB&lt;/code&gt; or
-    &lt;code&gt;0b1111110&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;Each printable character is displayed
-    in Tables 1-5, along with a symbol called a
-    &lt;strong&gt;grapheme&lt;/strong&gt;. Each table is denoted with a unique
-    string called a &lt;strong&gt;character class&lt;/strong&gt;.&lt;/p&gt;
-    &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;&lt;strong&gt;Table 1.&lt;/strong&gt; Punctuation. Character Class:
-    &lt;code&gt;\\p{Punct}&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;table
-    class=&#34;tableblock frame-all grid-all stretch&#34;&gt; &lt;colgroup&gt;
-    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;col style=&#34;width:
-    50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td
-    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;strong&gt;Byte&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;strong&gt;Grapheme&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;!&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;&#34;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;#&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;$&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;%&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;&amp;amp;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00100111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;(&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;)&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;*&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;+&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;,&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;-&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;.&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b00101111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;/&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;:&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;&amp;lt;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;=&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;?&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;@&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;[&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01011100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;\&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;]&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;^&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;_&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;+ `
-    +&lt;/code&gt;&lt;/p&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td
-    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;{&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;`&lt;/p&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;`&lt;/p&gt;&lt;/td&gt; &lt;td
-    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;}&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;&lt;strong&gt;Table 2.&lt;/strong&gt;
-    Upper-case letters. Character Class:
-    &lt;code&gt;[A-Z]&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;table
-    class=&#34;tableblock frame-all grid-all stretch&#34;&gt; &lt;colgroup&gt;
-    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;col style=&#34;width:
-    50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td
-    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;A&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;B&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;C&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;D&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;E&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;F&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01000111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;G&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;H&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;I&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;J&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;K&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;L&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;M&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;N&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01001111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;O&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;P&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;Q&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;R&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;S&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;T&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;U&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;V&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01010111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;W&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01011000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;X&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01011001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;Y&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01011010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;Z&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;&lt;strong&gt;Table 3.&lt;/strong&gt;
-    Lower-case letters. Character Class:
-    &lt;code&gt;[a-z]&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;table
-    class=&#34;tableblock frame-all grid-all stretch&#34;&gt; &lt;colgroup&gt;
-    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;col style=&#34;width:
-    50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td
-    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;a&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;b&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;c&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;d&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;e&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;f&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;g&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;h&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;i&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;j&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;k&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;l&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;m&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;n&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;o&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;p&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;q&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;r&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;s&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;t&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;u&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;v&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01110111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;w&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01111001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01011010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;z&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;&lt;strong&gt;Table 4.&lt;/strong&gt;
-    Digits. Character Class: &lt;code&gt;[0-9]&lt;/code&gt;.&lt;/p&gt;
-    &lt;/div&gt; &lt;table class=&#34;tableblock frame-all grid-all
-    stretch&#34;&gt; &lt;colgroup&gt; &lt;col style=&#34;width: 50%;&#34;&gt;
-    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt;
-    &lt;tr&gt; &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;1&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;2&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;3&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;4&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;5&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;6&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01100111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;7&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;8&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b01101001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;9&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;Additionally, there are composite
-    character classes:&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;*&lt;code&gt;\w&lt;/code&gt;: either
-    &lt;code&gt;[a-z]&lt;/code&gt;, &lt;code&gt;[A-z]&lt;/code&gt;, or
-    &lt;code&gt;[0-9]&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;An &lt;strong&gt;ASCII
-    string&lt;/strong&gt; is defined recursively:&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case: each
-    ASCII character (&lt;code&gt;0b0BBBBBBB&lt;/code&gt;) is an ASCII
-    string.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Recursive case: if
-    &lt;code&gt;s&lt;/code&gt; is an ASCII string, and
-    &lt;code&gt;c&lt;/code&gt; is an ASCII character, then
-    &lt;code&gt;sc&lt;/code&gt; is an ASCII string.&lt;/p&gt; &lt;/li&gt;
-    &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt; &lt;p&gt;It
-    can be readily verified that each ASCII string is a binary string. See
-    Bootstrap for a complete proof.&lt;/p&gt; &lt;/div&gt; &lt;/div&gt;
-    &lt;/div&gt; &lt;div class=&#34;sect1&#34;&gt; &lt;h2
-    id=&#34;_tokens&#34;&gt;Tokens&lt;/h2&gt; &lt;div
-    class=&#34;sectionbody&#34;&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;The key building blocks of the syntax include reserved symbols. In
-    order to encode these symbols for users, we introduce special syntax
-    involving quotes and prefixes.&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;sect2&#34;&gt; &lt;h3
-    id=&#34;_literals&#34;&gt;Literals&lt;/h3&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;A &lt;strong&gt;single quoted literal
-    string&lt;/strong&gt; is defined recursively.&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case: the
-    following are single quoted literal strings:&lt;/p&gt; &lt;div
-    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;(in other words,
-    all characters &lt;strong&gt;except&lt;/strong&gt;
-    &lt;code&gt;&#39;&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
-    &lt;p&gt;(&lt;code&gt;\w&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;\&#39;&lt;/code&gt;&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-    &lt;/div&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Recursive step: if
-    &lt;code&gt;l&lt;/code&gt; is a single quoted string and
-    &lt;code&gt;c&lt;/code&gt; is a binary string satisfying the base case, then
-    &lt;code&gt;l.c&lt;/code&gt; is a single quoted string.&lt;/p&gt;
-    &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;A &lt;strong&gt;double quoted literal string&lt;/strong&gt; is
-    defined recursively.&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case: the
-    following are single quoted literal strings:&lt;/p&gt; &lt;div
-    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;(In other words,
-    all characters &lt;strong&gt;except&lt;/strong&gt;
-    &lt;code&gt;&#34;&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
-    &lt;p&gt;(&lt;code&gt;\w&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;\&#34;&lt;/code&gt;&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-    &lt;/div&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Recursive step: if
-    &lt;code&gt;l&lt;/code&gt; is a double quoted string and
-    &lt;code&gt;c&lt;/code&gt; is a binary string satisfying the base case, then
-    &lt;code&gt;l.c&lt;/code&gt; is a double quoted string.&lt;/p&gt;
-    &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;A &lt;strong&gt;literal string&lt;/strong&gt; is a literal single
-    quoted string or a literal double quoted string.&lt;/p&gt; &lt;/div&gt;
-    &lt;/div&gt; &lt;div class=&#34;sect2&#34;&gt; &lt;h3
-    id=&#34;_number_systems&#34;&gt;Number Systems&lt;/h3&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;As with above, binary strings start
-    with &lt;code&gt;&#34;0b&#34;&lt;/code&gt;. Additionally, we support two
-    other systems:&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;ulist&#34;&gt;
-    &lt;ul&gt; &lt;li&gt; &lt;p&gt;Decimal: denoted with digits
-    &lt;code&gt;[0-9]&lt;/code&gt;. Each digit translates to binary as
-    follows:&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;Table 5. Decimal to Binary.&lt;/p&gt;
-    &lt;/div&gt; &lt;table class=&#34;tableblock frame-all grid-all
-    stretch&#34;&gt; &lt;colgroup&gt; &lt;col style=&#34;width: 50%;&#34;&gt;
-    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt;
-    &lt;tr&gt; &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;1&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;2&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;3&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;4&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;5&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;6&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;7&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;8&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;9&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div class=&#34;ulist&#34;&gt;
-    &lt;ul&gt; &lt;li&gt; &lt;p&gt;Hexadecimal: a
-    &lt;strong&gt;hexadecimal&lt;/strong&gt; digit is denoted by: either
-    &lt;code&gt;[0-9]&lt;/code&gt;, lower-case letters
-    &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt;,
-    &lt;code&gt;c&lt;/code&gt;, &lt;code&gt;d&lt;/code&gt;,
-    &lt;code&gt;e&lt;/code&gt;, or &lt;code&gt;f&lt;/code&gt;, or upper-case
-    letters &lt;code&gt;A&lt;/code&gt;, &lt;code&gt;B&lt;/code&gt;,
-    &lt;code&gt;C&lt;/code&gt;, &lt;code&gt;D&lt;/code&gt;,
-    &lt;code&gt;E&lt;/code&gt;, and &lt;code&gt;F&lt;/code&gt;. Each digit
-    translates to binary as follows:&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-    &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt; &lt;p&gt;Table 6.
-    Hexadecimal to Binary.&lt;/p&gt; &lt;/div&gt; &lt;table
-    class=&#34;tableblock frame-all grid-all stretch&#34;&gt; &lt;colgroup&gt;
-    &lt;col style=&#34;width: 50%;&#34;&gt; &lt;col style=&#34;width:
-    50%;&#34;&gt; &lt;/colgroup&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td
-    class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;1&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;2&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;3&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;4&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;5&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;6&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;7&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b0111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;8&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1000&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;9&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1001&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;a&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;A&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1010&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;b&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;B&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1011&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;c&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;C&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1100&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;d&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;D&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1101&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;e&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;E&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1110&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;f&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;tr&gt; &lt;td class=&#34;tableblock halign-left
-    valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;F&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;td class=&#34;tableblock halign-left valign-top&#34;&gt;&lt;p
-    class=&#34;tableblock&#34;&gt;&lt;code&gt;0b1111&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
-    &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;A hexadecimal number may be written
-    with all lower-case letters, or all upper-case letters. More
-    precisely:&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;ulist&#34;&gt;
-    &lt;ul&gt; &lt;li&gt; &lt;p&gt;A &lt;strong&gt;lower-case&lt;/strong&gt;
-    hexadecimal number is defined recursively:&lt;/p&gt; &lt;div
-    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case:
-    &lt;code&gt;h&lt;/code&gt; is either &lt;code&gt;[0-9]&lt;/code&gt; or
-    &lt;code&gt;[a-z]&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
-    &lt;p&gt;Recursive case: if &lt;code&gt;h&lt;/code&gt; is a lower-case
-    hexadecimal number and &lt;code&gt;d&lt;/code&gt; is a digit satisfying the
-    above base case, then &lt;code&gt;hd&lt;/code&gt; is a lower-case
-    hexadecimal number.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;
-    &lt;/li&gt; &lt;li&gt; &lt;p&gt;An &lt;strong&gt;upper-case&lt;/strong&gt;
-    hexadecimal number is defined recursively:&lt;/p&gt; &lt;div
-    class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case:
-    &lt;code&gt;h&lt;/code&gt; is either &lt;code&gt;[0-9]&lt;/code&gt; or
-    &lt;code&gt;[A-Z]&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;
-    &lt;p&gt;Recursive case: if &lt;code&gt;h&lt;/code&gt; is a upper-case
-    hexadecimal number and &lt;code&gt;d&lt;/code&gt; is a digit satisfying the
-    above base case, then &lt;code&gt;hd&lt;/code&gt; is a upper-case
-    hexadecimal number.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;
-    &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;A &lt;strong&gt;hexadecimal number&lt;/strong&gt; is either a
-    lower-cased hexadecimal number of an upper-case hexadecimal
-    number.&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;Hexadecimal numbers are denoted with the prefix
-    &lt;code&gt;0x&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;/div&gt;
-    &lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;sect1&#34;&gt; &lt;h2
-    id=&#34;_grammar&#34;&gt;Grammar&lt;/h2&gt; &lt;div
-    class=&#34;sectionbody&#34;&gt; &lt;div class=&#34;paragraph&#34;&gt;
-    &lt;p&gt;Instead of EBNF, the grammar is bootstrapped in a limited subset of
-    Welkin. This subset can be &lt;strong&gt;completely&lt;/strong&gt; described
-    by a regular expression, or in a simple recursive statement. This is called
-    the Minimal Grammar.&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;In fact, the
-    &lt;strong&gt;entire&lt;/strong&gt; semantics can be expressed with the
-    Minimal Grammar; this is done in the Boostrap. However, for expressivity, we
-    include the Full Grammar, allowing for arbitrary nesting of terms.&lt;/p&gt;
-    &lt;/div&gt; &lt;div class=&#34;sect2&#34;&gt; &lt;h3
-    id=&#34;_minimal_grammar&#34;&gt;Minimal Grammar&lt;/h3&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;For simplicity, we exclude most of
-    the concepts defined in Tokens.&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;The &lt;strong&gt;Minimal
-    Welkin&lt;/strong&gt; language is defined as follows:&lt;/p&gt; &lt;/div&gt;
-    &lt;div class=&#34;ulist&#34;&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A part is
-    either &lt;code&gt;[a-z]&lt;/code&gt; or
-    &lt;code&gt;[A-Z]&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An
-    arrow is a sequence &lt;code&gt;(p1 &#34;--&#34; p2? &#34;-&amp;#8594;&#34;
-    p3)&lt;/code&gt;, where &lt;code&gt;p1&lt;/code&gt;,
-    &lt;code&gt;p2&lt;/code&gt;, and &lt;code&gt;p3&lt;/code&gt; are
-    parts.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A web is a sequence of
-    either parts or arrows, enclosed by brackets
-    (&lt;code&gt;&#34;{&#34;&lt;/code&gt; and
-    &lt;code&gt;&#34;}&#34;&lt;/code&gt;). This sequence may be empty. In this
-    case, the web is denoted by &lt;code&gt;{}&lt;/code&gt;.&lt;/p&gt;
-    &lt;/li&gt; &lt;li&gt; &lt;p&gt;A term is either a part, a web, or an
-    arc.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A &#34;Minimal Welkin&#34;
-    string is defined recursively:&lt;/p&gt; &lt;div class=&#34;ulist&#34;&gt;
-    &lt;ul&gt; &lt;li&gt; &lt;p&gt;Base case: any term.&lt;/p&gt; &lt;/li&gt;
-    &lt;li&gt; &lt;p&gt;Recursive case: if &lt;code&gt;s&lt;/code&gt; is an
-    accepted string and &lt;code&gt;t&lt;/code&gt; is a term, then
-    &lt;code&gt;s,t&lt;/code&gt; is accepted by the grammar.&lt;/p&gt;
-    &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;
-    &lt;/div&gt; &lt;div class=&#34;sect2&#34;&gt; &lt;h3
-    id=&#34;_full_grammar&#34;&gt;Full Grammar&lt;/h3&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;Refer to Tokens for more details on
-    literals and number systems.&lt;/p&gt; &lt;/div&gt; &lt;div
-    class=&#34;paragraph&#34;&gt; &lt;p&gt;` start -&amp;#8594; terms
-    `&lt;/p&gt; &lt;/div&gt; &lt;div class=&#34;paragraph&#34;&gt; &lt;p&gt;It
-    can be readily shown that the full grammar is compatible with the Minimal
-    Grammar. Additionally, this grammar is &lt;strong&gt;LL(0)&lt;/strong&gt;,
-    ensuring it is unambiguous. Refer to the Bootstrap for complete
-    proofs.&lt;/p&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;
+    <div id="preamble">
+      <div class="sectionbody">
+        <div class="paragraph">
+          <p>This document formalizes the Welkin information language.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_design_goals">Design Goals</h2>
+      <div class="sectionbody">
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>Unambiguous.</p>
+            </li>
+            <li>
+              <p>Ontology.</p>
+            </li>
+            <li>
+              <p>Universal.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_dependencies">Dependencies</h2>
+      <div class="sectionbody">
+        <div class="paragraph">
+          <p>Welkin depends on one existing standard:</p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>ASCII.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p>
+            To make this document self-contained, all key aspects are included.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_strings">Strings</h2>
+      <div class="sectionbody">
+        <div class="paragraph">
+          <p>We introduce five symbols:</p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p><code>0</code>, denoting the zero bit.</p>
+            </li>
+            <li>
+              <p><code>1</code>, denoting the one bit.</p>
+            </li>
+            <li>
+              <p><code>B</code>, denoting a bit.</p>
+            </li>
+            <li>
+              <p><code>{}</code>, denoting the empty web.</p>
+            </li>
+            <li>
+              <p>``, denoting concatenation.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p>
+            A <code>bit</code> <code>B</code> is either <code>0</code> or
+            <code>1</code>. As notation, a sequence of bits starts with
+            <code>0b</code>. Bits are read from left to right.
+          </p>
+        </div>
+        <div class="paragraph">
+          <p>A <strong>binary string</strong> is defined recursively:</p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>
+                Base case: <code>0</code> and <code>1</code> are binary strings.
+              </p>
+            </li>
+            <li>
+              <p>
+                Recursive case: if <code>s</code> is a binary string, then
+                <code>s0</code> is a binary string and <code>s1</code> is a
+                binary string.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p>
+            A <strong>byte</strong> is a sequence of eight bits:
+            <code>0bBBBBBBBB</code>.
+          </p>
+        </div>
+        <div class="paragraph">
+          <p>
+            An <strong>ASCII character</strong> is a byte
+            <code>0b0BBBBBBB</code>. A <strong>printable character</strong> is
+            either <code>0b00BBBBBB</code> or <code>0b1111110</code>.
+          </p>
+        </div>
+        <div class="paragraph">
+          <p>
+            Each printable character is displayed in Tables 1-5, along with a
+            symbol called a <strong>grapheme</strong>. Each table is denoted
+            with a unique string called a <strong>character class</strong>.
+          </p>
+        </div>
+        <div class="paragraph">
+          <p>
+            <strong>Table 1.</strong> Punctuation. Character Class:
+            <code>\\p{Punct}</code>.
+          </p>
+        </div>
+        <table class="tableblock frame-all grid-all stretch">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><strong>Byte</strong></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><strong>Grapheme</strong></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00100001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>!</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00100010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>"</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00100011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>#</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00100100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>$</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00100101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>%</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00100110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>&amp;</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00100111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>'</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00101000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>(</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00101001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>)</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00101010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>*</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00101011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>+</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00101100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>,</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00101101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>-</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00101110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>.</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b00101111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>/</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01111010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>:</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01111011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>;</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01111100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>&lt;</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01111101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>=</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01111110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>&gt;</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>?</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01000000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>@</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01010011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>[</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01011100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>\</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>]</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>^</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>_</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01110000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>`</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01110000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>{</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01111101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock">`</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock">`</p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01111110</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>}</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01111111</code></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paragraph">
+          <p>
+            <strong>Table 2.</strong> Upper-case letters. Character Class:
+            <code>[A-Z]</code>.
+          </p>
+        </div>
+        <table class="tableblock frame-all grid-all stretch">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01000001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>A</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01000010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>B</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01000011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>C</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01000100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>D</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01000101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>E</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01000110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>F</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01000111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>G</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>H</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>I</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>J</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>K</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>L</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>M</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>N</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01001111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>O</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01010000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>P</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01010001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>Q</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01010010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>R</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01010011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>S</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01010100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>T</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01010101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>U</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01010110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>V</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01010111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>W</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01011000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>X</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01011001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>Y</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01011010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>Z</code></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paragraph">
+          <p>
+            <strong>Table 3.</strong> Lower-case letters. Character Class:
+            <code>[a-z]</code>.
+          </p>
+        </div>
+        <table class="tableblock frame-all grid-all stretch">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>a</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>b</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>c</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>d</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>e</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>f</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>g</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01101000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>h</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01101001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>i</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01101010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>j</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01101011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>k</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01101100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>l</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01101101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>m</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01101110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>n</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01101111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>o</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01110000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>p</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01110001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>q</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01110010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>r</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01110011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>s</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01110100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>t</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01110101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>u</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01110110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>v</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01110111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>w</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01111000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>x</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01111001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>y</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01011010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>z</code></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paragraph">
+          <p>
+            <strong>Table 4.</strong> Digits. Character Class:
+            <code>[0-9]</code>.
+          </p>
+        </div>
+        <table class="tableblock frame-all grid-all stretch">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>1</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100010</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>2</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100011</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>3</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100100</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>4</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100101</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>5</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100110</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>6</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01100111</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>7</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01101000</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>8</code></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>0b01101001</code></p>
+              </td>
+              <td class="tableblock halign-left valign-top">
+                <p class="tableblock"><code>9</code></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paragraph">
+          <p>Additionally, there are composite character classes:</p>
+        </div>
+        <div class="paragraph">
+          <p>
+            *<code>\w</code>: either <code>[a-z]</code>, <code>[A-Z]</code>, or
+            <code>[0-9]</code>.
+          </p>
+        </div>
+        <div class="paragraph">
+          <p>An <strong>ASCII string</strong> is defined recursively:</p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>
+                Base case: each ASCII character (<code>0b0BBBBBBB</code>) is an
+                ASCII string.
+              </p>
+            </li>
+            <li>
+              <p>
+                Recursive case: if <code>s</code> is an ASCII string, and
+                <code>c</code> is an ASCII character, then <code>sc</code> is an
+                ASCII string.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p>
+            It can be readily verified that each ASCII string is a binary
+            string. See Bootstrap for a complete proof.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_tokens">Tokens</h2>
+      <div class="sectionbody">
+        <div class="paragraph">
+          <p>
+            The key building blocks of the syntax include reserved symbols. In
+            order to encode these symbols in user-defined terms, we introduce
+            special syntax involving quotes and prefixes.
+          </p>
+        </div>
+        <div class="sect2">
+          <h3 id="_literals">Literals</h3>
+          <div class="paragraph">
+            <p>
+              A <strong>single quoted literal string</strong> is defined
+              recursively.
+            </p>
+          </div>
+          <div class="ulist">
+            <ul>
+              <li>
+                <p>
+                  Base case: the following are single quoted literal strings:
+                </p>
+                <div class="ulist">
+                  <ul>
+                    <li>
+                      <p>
+                        (in other words, all characters <strong>except</strong>
+                        <code>'</code>).
+                      </p>
+                    </li>
+                    <li>
+                      <p>(<code>\w</code>).</p>
+                    </li>
+                    <li>
+                      <p><code>\'</code></p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <p>
+                  Recursive step: if <code>l</code> is a single quoted string
+                  and <code>c</code> is a binary string satisfying the base
+                  case, then <code>l.c</code> is a single quoted string.
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="paragraph">
+            <p>
+              A <strong>double quoted literal string</strong> is defined
+              recursively.
+            </p>
+          </div>
+          <div class="ulist">
+            <ul>
+              <li>
+                <p>
+                  Base case: the following are single quoted literal strings:
+                </p>
+                <div class="ulist">
+                  <ul>
+                    <li>
+                      <p>
+                        (in other words, all characters <strong>except</strong>
+                        <code>"</code>).
+                      </p>
+                    </li>
+                    <li>
+                      <p>(<code>\w</code>).</p>
+                    </li>
+                    <li>
+                      <p><code>\"</code></p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <p>
+                  Recursive step: if <code>l</code> is a double quoted string
+                  and <code>c</code> is a binary string satisfying the base
+                  case, then <code>l.c</code> is a double quoted string.
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="paragraph">
+            <p>
+              A <strong>literal string</strong> is a literal single quoted
+              string or a literal double quoted string.
+            </p>
+          </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_number_systems">Number Systems</h3>
+          <div class="paragraph">
+            <p>
+              As with above, binary strings start with <code>"0b"</code>.
+              Additionally, we support two other systems:
+            </p>
+          </div>
+          <div class="ulist">
+            <ul>
+              <li>
+                <p>
+                  Decimal: denoted with digits <code>[0-9]</code>. Each digit
+                  translates to binary as follows:
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="paragraph">
+            <p>Table 5. Decimal to Binary.</p>
+          </div>
+          <table class="tableblock frame-all grid-all stretch">
+            <colgroup>
+              <col style="width: 50%" />
+              <col style="width: 50%" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">Digit</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">Binary</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0000</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>1</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0001</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>2</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0010</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>3</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0011</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>4</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0100</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>5</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0101</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>6</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0110</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>7</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0111</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>8</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1000</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>9</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1001</code></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="ulist">
+            <ul>
+              <li>
+                <p>
+                  Hexadecimal: a <strong>hexadecimal</strong> digit is denoted
+                  by: either <code>[0-9]</code>, lower-case letters
+                  <code>a</code>, <code>b</code>, <code>c</code>,
+                  <code>d</code>, <code>e</code>, or <code>f</code>, or
+                  upper-case letters <code>A</code>, <code>B</code>,
+                  <code>C</code>, <code>D</code>, <code>E</code>, and
+                  <code>F</code>. Each digit translates to binary as follows:
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="paragraph">
+            <p>Table 6. Hexadecimal to Binary.</p>
+          </div>
+          <table class="tableblock frame-all grid-all stretch">
+            <colgroup>
+              <col style="width: 50%" />
+              <col style="width: 50%" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">Digit</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">Binary</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0000</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>1</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0001</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>2</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0010</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>3</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0011</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>4</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0100</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>5</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0101</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>6</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0110</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>7</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b0111</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>8</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1000</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>9</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1001</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>a</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1010</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>A</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1010</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>b</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1011</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>B</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1011</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>c</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1100</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>C</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1100</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>d</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1101</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>D</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1101</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>e</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1110</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>E</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1110</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>f</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1111</code></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>F</code></p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>0b1111</code></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="paragraph">
+            <p>
+              A hexadecimal number may be written with all lower-case letters,
+              or all upper-case letters. More precisely:
+            </p>
+          </div>
+          <div class="ulist">
+            <ul>
+              <li>
+                <p>
+                  A <strong>lower-case</strong> hexadecimal number is defined
+                  recursively:
+                </p>
+                <div class="ulist">
+                  <ul>
+                    <li>
+                      <p>
+                        Base case: <code>h</code> is either
+                        <code>[0-9]</code> or <code>[a-z]</code>.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        Recursive case: if <code>h</code> is a lower-case
+                        hexadecimal number and <code>d</code> is a digit
+                        satisfying the above base case, then <code>hd</code> is
+                        a lower-case hexadecimal number.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <p>
+                  An <strong>upper-case</strong> hexadecimal number is defined
+                  recursively:
+                </p>
+                <div class="ulist">
+                  <ul>
+                    <li>
+                      <p>
+                        Base case: <code>h</code> is either
+                        <code>[0-9]</code> or <code>[A-Z]</code>.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        Recursive case: if <code>h</code> is a upper-case
+                        hexadecimal number and <code>d</code> is a digit
+                        satisfying the above base case, then <code>hd</code> is
+                        a upper-case hexadecimal number.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="paragraph">
+            <p>
+              A <strong>hexadecimal number</strong> is either a lower-cased
+              hexadecimal number of an upper-case hexadecimal number.
+            </p>
+          </div>
+          <div class="paragraph">
+            <p>
+              Hexadecimal numbers are denoted with the prefix <code>0x</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_grammar">Grammar</h2>
+      <div class="sectionbody">
+        <div class="paragraph">
+          <p>
+            Instead of EBNF, the grammar is bootstrapped in a limited subset of
+            Welkin. This subset can be <strong>completely</strong> described by
+            a regular expression, or in a simple recursive statement. This is
+            called the Minimal Grammar.
+          </p>
+        </div>
+        <div class="paragraph">
+          <p>
+            In fact, the <strong>entire</strong> semantics can be expressed with
+            the Minimal Grammar; this is done in the Boostrap. However, for
+            expressivity, we include the Full Grammar, allowing for arbitrary
+            nesting of terms.
+          </p>
+        </div>
+        <div class="sect2">
+          <h3 id="_minimal_grammar">Minimal Grammar</h3>
+          <div class="paragraph">
+            <p>
+              For simplicity, we exclude most of the concepts defined in Tokens.
+            </p>
+          </div>
+          <div class="paragraph">
+            <p>
+              The <strong>Minimal Welkin</strong> language is defined as
+              follows:
+            </p>
+          </div>
+          <div class="ulist">
+            <ul>
+              <li>
+                <p>
+                  A part is either <code>[a-z]</code> or <code>[A-Z]</code>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  An arrow is a sequence <code>(p1 "--" p2? "--&gt;" p3)</code>,
+                  where <code>p1</code>, <code>p2</code>, and
+                  <code>p3</code> are parts.
+                </p>
+              </li>
+              <li>
+                <p>
+                  A web is a sequence of either parts or arrows, enclosed by
+                  brackets (<code>"{"</code> and <code>"}"</code>). This
+                  sequence may be empty. In this case, the web is denoted by
+                  <code>{}</code>.
+                </p>
+              </li>
+              <li>
+                <p>A term is either a part, a web, or an arc.</p>
+              </li>
+              <li>
+                <p>A "Minimal Welkin" string is defined recursively:</p>
+                <div class="ulist">
+                  <ul>
+                    <li>
+                      <p>Base case: any term.</p>
+                    </li>
+                    <li>
+                      <p>
+                        Recursive case: if <code>s</code> is an accepted string
+                        and <code>t</code> is a term, then <code>s,t</code> is
+                        accepted by the grammar.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_full_grammar">Full Grammar</h3>
+          <div class="paragraph">
+            <p>
+              Refer to Tokens for more details on literals and number systems.
+            </p>
+          </div>
+          <div class="paragraph">
+            <p>Full Grammar in Welkin.</p>
+          </div>
+          <div class="listingblock">
+            <div class="content">
+              <pre class="highlight"><code>start --&gt; terms,
+terms --&gt; { term - "," -&gt; terms },
+terms --&gt; "",
+ term --&gt; part,
+ term --&gt; web,
+ term --&gt; arc,
+ part --&gt; {},</code></pre>
+            </div>
+          </div>
+          <div class="paragraph">
+            <p>
+              It can be readily shown that the full grammar is compatible with
+              the Minimal Grammar. Additionally, this grammar is
+              <strong>LL(0)</strong>, ensuring it is unambiguous. Refer to the
+              Bootstrap for complete proofs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="preamble">
+      <div class="sectionbody">
+        <div class="paragraph">
+          <p>A <strong>web</strong> is defined recursively:</p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>Base case:</p>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p><code>{}</code> is a web.</p>
+                  </li>
+                  <li>
+                    <p>Any number is a web.</p>
+                  </li>
+                  <li>
+                    <p>Any string literal is a web.</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>Recursive case: every sequence of arcs is a web.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_key_rules">Key Rules</h2>
+      <div class="sectionbody">
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>
+                <code>a - {} -> b</code> is equivalent to <code>a --> b</code>.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p>
+            Every Welkin web can be reduced to a normal form, which is a fixed
+            point (and no longer be reduced). This is weaker than equality and
+            need not preserve labels.
+          </p>
+        </div>
+        <div class="paragraph">
+          <p>The normal forms are determined by the following rules:</p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p><code>{}</code> is a normal form:</p>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p><code>a --> a</code> reduces to <code>{}</code></p>
+                  </li>
+                  <li>
+                    <p>
+                      <code>a --> b --> a</code> reduces to <code>{}</code>.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p><code>a - 0 -> a</code> is a normal form:</p>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>
+                      <code>a --> b</code> reduces to <code>a - 0 -> a</code>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <code>a &#8592; 0 -> a</code> reduces to
+                      <code>a - 0 -> a</code>. More generally, any cycle
+                      <strong>with all unlabeled arcs</strong> reduces to
+                      <code>{}</code>.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <p>
+                <code>a - d -> c</code> and <code>b --> d</code> implies
+                <code>a' - b -> c'</code>. In particular,
+                <code>a --> c</code> implies <code>a - b -> c</code> for
+                <strong>any</strong> term b. The converse need not hold:
+                <code>a - 0 -> a</code> is reduced, but <code>a --> a</code> is
+                <code>{}</code>.
+              </p>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>
+                      This principle ensures that the
+                      <strong>least</strong> such part, modulo the web, is
+                      written.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p>
+            Note that, when combined with the normal form rules, it is possible
+            for a series of <strong>all</strong> labeled arcs to produce
+            <code>{}</code>. For example:
+          </p>
+        </div>
+        <div class="paragraph">
+          <p><code>a - {c --> d --> c} --> a</code>.</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
